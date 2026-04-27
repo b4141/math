@@ -117,3 +117,89 @@ $$F(3;5) = 1 - e^{-0.18}$$
 The probability that the wind speed is $3$ meters per second or less is approximately $0.1647$, or $16.47\%$.
 Would you like to try calculating the probability for a different wind speed using these steps, or calculate the mean (average) value for this exact scenario?
 
+---
+
+
+You now have a solid grasp of the core concepts, but there are a few extra tools in the Rayleigh distribution toolkit that are incredibly useful for analyzing data.
+Here are the final pieces of the puzzle you need to know.
+------------------------------
+## 📊 1. The Summary Statistics
+Whenever you are dealing with a distribution, people will naturally ask for the average or the most likely outcome. You can find these using only your scale parameter ($\sigma$):
+
+* 📍 The Mode (Most Likely Value): This is exactly equal to $\sigma$. In our wind example where $\sigma = 5$, the most common wind speed you will observe is exactly $5\text{ m/s}$.
+* ⚖️ The Mean (Average): This is the expected average over a long period of time.
+$$\text{Mean} = \sigma \sqrt{\frac{\pi}{2}} \approx 1.253 \times \sigma$$ For our example: $5 \times 1.253 = \mathbf{6.265\text{ m/s}}$.
+* 📉 The Variance (Spread): This tells you how much the data fluctuates.
+$$\text{Variance} = \frac{4 - \pi}{2} \sigma^2 \approx 0.429 \times \sigma^2$$ For our example: $0.429 \times 25 = \mathbf{10.725}$.
+
+------------------------------
+## 🧬 2. The Secret Recipe (How to make one)
+If you ever need to simulate or generate Rayleigh random numbers (for a video game, a math model, or computer code), you don't need a complex supercomputer. You just need a standard random number generator that spits out a number $U$ between $0$ and $1$.
+You can transform that standard random number into a Rayleigh distribution using this exact formula:
+$$X = \sigma \sqrt{-2 \ln(1 - U)}$$ (Where $\ln$ is the natural logarithm).
+------------------------------
+## 🔗 3. How it relates to other math
+If you ever advance into higher-level statistics, you will hear people mention that the Rayleigh distribution is just a "special case" of other famous distributions:
+
+* The Chi Distribution: A Rayleigh distribution is exactly the same as a Chi distribution with $2$ degrees of freedom.
+* The Weibull Distribution: If you take a Weibull distribution and set its shape parameter to exactly $2$, it turns into a Rayleigh distribution.
+
+------------------------------
+## ✅ Summary Checklist
+To master the Rayleigh distribution, you just need to remember these four things:
+
+   1. It measures the straight-line distance of two random, perpendicular forces.
+   2. It never goes negative and is skewed to the right.
+   3. Everything is controlled by a single number, Sigma ($\sigma$).
+   4. The probability of something being less than or equal to $x$ is $1 - e^{-\frac{x^2}{2\sigma^2}}$.
+
+Would you like to try calculating the average wind speed for a different spread, or are you ready to wrap up this topic?
+
+
+
+
+----
+
+
+To calculate the scale parameter $\sigma$ (Sigma), you need to have some existing data or information about the specific scenario you are analyzing.
+Because the Rayleigh distribution only depends on that single parameter, you can calculate $\sigma$ in a few different ways depending on what information you are starting with [1].
+------------------------------
+## 📐 Method 1: You have a list of raw data
+If you have a set of data points (like 100 different wind speed measurements) and you want to find the $\sigma$ that best fits that data, you use the Maximum Likelihood Estimator (MLE) [2].
+## The Formula:
+$$\sigma \approx \sqrt{\frac{1}{2n} \sum_{i=1}^{n} x_i^2}$$ 
+## How to do it step-by-step:
+
+   1. Square every single data point in your list.
+   2. Add all of those squared numbers together ($\sum x_i^2$) [2].
+   3. Divide that total sum by two times the number of data points you have ($2n$) [2].
+   4. Take the square root of that result to get $\sigma$.
+
+------------------------------
+## ⚖️ Method 2: You know the actual average (Mean)
+If you do not have raw data but someone tells you the exact average value of the system, you can easily work backward to find $\sigma$.
+## The Formula:
+$$\sigma = \frac{\text{Mean}}{\sqrt{\frac{\pi}{2}}} \approx \frac{\text{Mean}}{1.2533}$$ 
+## Example:
+If the average wind speed in a city is known to be $10\text{ m/s}$:
+
+* $\sigma = 10 / 1.2533 = \mathbf{7.98}$
+
+------------------------------
+## 🎯 Method 3: You know the most common value (Mode)
+This is the easiest method of all. In a Rayleigh distribution, the peak of the curve (the single most common value to occur) is exactly equal to $\sigma$.
+## The Formula:
+$$\sigma = \text{Mode}$$ 
+## Example:
+If you look at a graph of wave heights and notice that the highest point on the curve (the most frequent wave height) is $4\text{ meters}$:
+
+* $\sigma = \mathbf{4}$
+
+------------------------------
+## 📉 Method 4: You know the Variance
+If you are given the variance (how spread out the data is), you can reverse the variance formula.
+## The Formula:
+$$\sigma = \sqrt{\frac{\text{Variance}}{2 - \frac{\pi}{2}}} \approx \sqrt{\frac{\text{Variance}}{0.4292}}$$ 
+------------------------------
+Do you have a specific list of numbers or a known average that you would like to use to calculate a real $\sigma$ right now?
+
